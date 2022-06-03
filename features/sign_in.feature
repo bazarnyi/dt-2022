@@ -6,3 +6,7 @@ Feature: Sign in feature
       And I fill in password
       And I click sign in button
       Then I see that user is logged in
+
+    Scenario: User can login using helper module
+      Given GitLab user is signed in
+      Then I see that user is logged in

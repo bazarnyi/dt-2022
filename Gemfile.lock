@@ -39,6 +39,7 @@ GEM
     cucumber-messages (18.0.0)
     cucumber-tag-expressions (4.1.0)
     diff-lcs (1.5.0)
+    ffaker (2.21.0)
     ffi (1.15.5)
     matrix (0.4.2)
     mime-types (3.4.1)
@@ -54,6 +55,7 @@ GEM
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     regexp_parser (2.4.0)
+    require_all (3.0.0)
     rexml (3.2.5)
     rspec-expectations (3.11.0)
       diff-lcs (>= 1.2.0, < 2.0)
@@ -64,6 +66,11 @@ GEM
       childprocess (>= 0.5, < 5.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2)
+    site_prism (3.7.3)
+      addressable (~> 2.6)
+      capybara (~> 3.15)
+      site_prism-all_there (>= 0.3.1, < 1.0)
+    site_prism-all_there (0.3.2)
     sys-uname (1.2.2)
       ffi (~> 1.1)
     xpath (3.2.0)
@@ -75,8 +82,11 @@ PLATFORMS
 DEPENDENCIES
   capybara
   cucumber
+  ffaker
+  require_all
   rspec-expectations
   selenium-webdriver
+  site_prism
 
 BUNDLED WITH
    2.3.14
