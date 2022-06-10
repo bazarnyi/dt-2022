@@ -1,5 +1,6 @@
 require 'capybara/cucumber'
 require 'require_all'
+require 'rest-client'
 require 'rspec/expectations'
 require 'selenium-webdriver'
 require 'securerandom'

@@ -17,7 +17,7 @@ end
 
 Then(/^I see that user is logged in$/) do
   @home_page = HomePage.new
-  expect(@home_page.welcome_msg.text).to eql 'Welcome to GitLab'
+  expect(@home_page.welcome_msg.text).to include 'Welcome to GitLab'
 end
 
 Given(/^GitLab user is signed in$/) do
