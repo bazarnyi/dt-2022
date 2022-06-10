@@ -1,28 +1,26 @@
-user = User.new
-
 Given(/^Gitlab sign up page is opened$/) do
   visit 'https://gitlab.testautomate.me/users/sign_up'
 end
 
 When(/^I fill in first name$/) do
-  find('#new_user_first_name').set user.firstname
+  @user = User.new
+  find('#new_user_first_name').set @user.firstname
 end
 
 And(/^I fill in last name$/) do
-  find('#new_user_last_name').set user.lastname
+  find('#new_user_last_name').set @user.lastname
 end
 
 And(/^I fill in new username$/) do
-  find('#new_user_username').set user.username
+  find('#new_user_username').set @user.username
 end
 
 And(/^I fill in new email$/) do
-  find('#new_user_email').set user.email
+  find('#new_user_email').set @user.email
 end
 
 And(/^I fill in new password$/) do
-  find('#new_user_password').set user.password
-  sleep 3
+  find('#new_user_password').set @user.password
 end
 
 And(/^I click Register button$/) do
@@ -30,5 +28,14 @@ And(/^I click Register button$/) do
 end
 
 Then(/^I see that user is registered$/) do
-  expect(find('#content-body h2').text).to eql "Welcome to GitLab,\n#{user.firstname}!"
+  expect(find('#content-body h2').text).to eql "Welcome to GitLab,\n#{@user.firstname}!"
+end
+
+When(/^I register user via UI$/) do
+  @user = User.new
+  sign_up_user @user
+
+  user_credentials = { username: @user.username, password: @user.password }.to_json
+
+  File.open('user.json', 'w') { |file| file.write(user_credentials) }
 end
