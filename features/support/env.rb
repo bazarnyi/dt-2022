@@ -1,5 +1,6 @@
 require 'capybara/cucumber'
 require 'require_all'
+require 'rest-client'
 require 'rspec/expectations'
 require 'selenium-webdriver'
 require 'securerandom'
@@ -19,6 +20,10 @@ Before do
   Capybara.register_driver :selenium do |app|
     Capybara::Selenium::Driver.new(app, browser: :chrome, options: chrome_options)
   end
+end
+
+at_exit do
+  File.delete('user.json') if File.exist?('user.json')
 end
 
 World(FeatureHelper)
