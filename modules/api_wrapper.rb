@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# This module contains API methods required for project
 module APIWrapper
   def sign_up_user_api(user)
     payload = {
@@ -9,17 +10,16 @@ module APIWrapper
       "password": user.password,
       "skip_confirmation": true
     }
-    RestClient.post("#{ENV['ROOT_URL']}/api/v4/users", payload, headers = api_headers)
+    RestClient.post("#{ENV['ROOT_URL']}/api/v4/users", payload, api_headers)
   end
 
   def get_user_api(user)
-    RestClient.get("#{ENV['ROOT_URL']}/api/v4/users?username=#{user.username}", headers = api_headers)
+    RestClient.get("#{ENV['ROOT_URL']}/api/v4/users?username=#{user.username}", api_headers)
   end
 
   def delete_user_api
     user_credentials = JSON.parse(File.read('user.json'))
-    RestClient.delete("#{ENV['ROOT_URL']}/api/v4/users/#{user_credentials['id']}?hard_delete=true",
-                      headers = api_headers)
+    RestClient.delete("#{ENV['ROOT_URL']}/api/v4/users/#{user_credentials['id']}?hard_delete=true", api_headers)
   end
 
   def api_headers

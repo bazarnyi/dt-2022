@@ -1,0 +1,3 @@
+Metrics/AbcSize:
+  Exclude:
+    - 'modules/feature_helper.rb'

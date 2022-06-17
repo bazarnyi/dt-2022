@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# This module contains repeatable actions for UI
 module FeatureHelper
   def sign_in_user(username, password)
     @sign_in_page = SignInPage.new
