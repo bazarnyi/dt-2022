@@ -1,3 +1,4 @@
+require 'dotenv/load'
 require 'capybara/cucumber'
 require 'require_all'
 require 'rest-client'

@@ -1,5 +1,5 @@
 Given(/^Gitlab sign up page is opened$/) do
-  visit 'https://gitlab.testautomate.me/users/sign_up'
+  visit "#{ENV['ROOT_URL']}/users/sign_up"
 end
 
 When(/^I fill in first name$/) do

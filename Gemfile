@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'capybara'
 gem 'cucumber'
+gem 'dotenv'
 gem 'ffaker'
 gem 'require_all'
 gem 'rest-client'
