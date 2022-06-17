@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Given(/^Gitlab sign up page is opened$/) do
   visit "#{ENV['ROOT_URL']}/users/sign_up"
 end
@@ -44,6 +46,7 @@ When(/^I register user via '([^"]*)'$/) do |method|
     raise 'User registration method is not defined'
   end
 
-  user_credentials = { username: @user.username, password: @user.password, id: JSON.parse(response.body)[0]['id'] }.to_json
+  user_credentials = { username: @user.username, password: @user.password,
+                       id: JSON.parse(response.body)[0]['id'] }.to_json
   File.open('user.json', 'w') { |file| file.write(user_credentials) }
 end

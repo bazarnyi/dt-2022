@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Then(/^I see that user is registered via API$/) do
   response = get_user_api @user
   expect(response.code).to eql 200

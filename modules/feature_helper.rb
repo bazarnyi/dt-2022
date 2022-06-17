@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module FeatureHelper
   def sign_in_user(username, password)
     @sign_in_page = SignInPage.new
@@ -6,7 +8,7 @@ module FeatureHelper
     @sign_in_page.password_field.set password
     @sign_in_page.sign_in_btn.click
   end
-  
+
   def sign_up_user(user)
     @sign_up_page = SignUpPage.new
     @sign_up_page.load
