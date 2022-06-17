@@ -35,7 +35,8 @@ When(/^I register user via UI$/) do
   @user = User.new
   sign_up_user @user
 
-  user_credentials = { username: @user.username, password: @user.password }.to_json
+  response = RestClient.get("https://gitlab.testautomate.me/api/v4/users?username=#{@user.username}", headers={Authorization: 'Bearer FKzy_BpV5wAybKf7Z9JX'})
 
+  user_credentials = { username: @user.username, password: @user.password, id: JSON.parse(response.body)[0]['id'] }.to_json
   File.open('user.json', 'w') { |file| file.write(user_credentials) }
 end
