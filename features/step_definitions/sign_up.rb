@@ -31,11 +31,18 @@ Then(/^I see that user is registered$/) do
   expect(find('#content-body h2').text).to eql "Welcome to GitLab,\n#{@user.firstname}!"
 end
 
-When(/^I register user via UI$/) do
+When(/^I register user via '([^"]*)'$/) do |method|
   @user = User.new
-  sign_up_user @user
-
-  response = RestClient.get("https://gitlab.testautomate.me/api/v4/users?username=#{@user.username}", headers={Authorization: 'Bearer FKzy_BpV5wAybKf7Z9JX'})
+  case method
+  when 'API'
+    sign_up_user_api @user
+    response = get_user_api @user
+  when 'UI'
+    sign_up_user @user
+    response = get_user_api @user
+  else
+    raise 'User registration method is not defined'
+  end
 
   user_credentials = { username: @user.username, password: @user.password, id: JSON.parse(response.body)[0]['id'] }.to_json
   File.open('user.json', 'w') { |file| file.write(user_credentials) }
