@@ -1,3 +1,4 @@
+@selenium
 Feature: Sign in feature
 
     Scenario: User can log in

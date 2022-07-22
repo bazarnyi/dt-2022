@@ -2,6 +2,8 @@
 
 source 'https://rubygems.org'
 
+gem 'appium_capybara'
+gem 'appium_lib'
 gem 'capybara'
 gem 'cucumber'
 gem 'dotenv'

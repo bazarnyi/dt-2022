@@ -3,6 +3,16 @@ GEM
   specs:
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
+    appium_capybara (2.0.0)
+      appium_lib (~> 12.0.0)
+      capybara (~> 3.36)
+    appium_lib (12.0.1)
+      appium_lib_core (~> 5.0)
+      nokogiri (~> 1.8, >= 1.8.1)
+      tomlrb (>= 1.1, < 3.0)
+    appium_lib_core (5.1.2)
+      faye-websocket (~> 0.11.0)
+      selenium-webdriver (~> 4.0, < 4.2)
     ast (2.4.2)
     builder (3.2.4)
     capybara (3.37.1)
@@ -43,6 +53,10 @@ GEM
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
     dotenv (2.7.6)
+    eventmachine (1.2.7)
+    faye-websocket (0.11.1)
+      eventmachine (>= 0.12.0)
+      websocket-driver (>= 0.5.1)
     ffaker (2.21.0)
     ffi (1.15.5)
     http-accept (1.7.0)
@@ -102,10 +116,14 @@ GEM
     site_prism-all_there (0.3.2)
     sys-uname (1.2.2)
       ffi (~> 1.1)
+    tomlrb (2.0.3)
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.8.1)
     unicode-display_width (2.1.0)
+    websocket-driver (0.7.5)
+      websocket-extensions (>= 0.1.0)
+    websocket-extensions (0.1.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
 
@@ -113,6 +131,8 @@ PLATFORMS
   x86_64-darwin-20
 
 DEPENDENCIES
+  appium_capybara
+  appium_lib
   capybara
   cucumber
   dotenv

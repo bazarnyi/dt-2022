@@ -20,4 +20,15 @@ module FeatureHelper
     @sign_up_page.password_field.set user.password
     @sign_up_page.register_btn.click
   end
+
+  def wait_for_activity_to_load(activity)
+    count = 0
+    until @driver.driver.current_activity.include? activity
+      sleep 0.25
+      count += 1
+
+      break if count == 20
+    end
+    sleep 0.25
+  end
 end

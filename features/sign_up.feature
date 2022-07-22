@@ -1,5 +1,7 @@
+@selenium
 Feature: Sign up feature
 
+  @sign_up
   Scenario: User can sign up
     Given Gitlab sign up page is opened
     When I fill in first name
