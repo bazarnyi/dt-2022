@@ -9,6 +9,7 @@ require 'rspec/expectations'
 require 'selenium-webdriver'
 require 'securerandom'
 require 'site_prism'
+require 'yaml'
 
 require_all 'models'
 require_all 'modules'
@@ -30,10 +31,27 @@ at_exit do
   File.delete('user.json') if File.exist?('user.json')
 end
 
+def device
+  device_list = YAML.load_file('/Users/db/repo/trainings/dt-2022/features/support/devices.yml')
+
+  case ENV['DEVICE']
+  when 'samsung'
+    device_list['samsung']
+  when 'emulator1'
+    device_list['emulator1']
+  when 'emulator2'
+    device_list['emulator2']
+  else
+    puts 'Device is not specified using default one'
+    device_list['emulator1']
+  end
+end
+
 def appium_caps
   { caps: {
     deviceName: 'Emulator',
     platformName: 'Android',
+    udid: device,
     app: '/Users/db/repo/trainings/LabCoat/app/build/outputs/apk/debug/app-debug.apk',
     appPackage: 'com.commit451.gitlab.debug',
     appActivity: 'com.commit451.gitlab.activity.LaunchActivity',
